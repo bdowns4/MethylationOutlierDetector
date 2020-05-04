@@ -45,7 +45,7 @@ Please download the script file release [here] https://github.com/bdowns4/Methyl
 
 ```
 unzip the file
-place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
+place the script file "MethylationOutlierDetector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
 In the Terminal window, set this directory as the current directory.
 
 ```
@@ -53,11 +53,11 @@ cd /path/
 
 ```
 
-Execute the HyperMethylation_Outlier_Detector.sh script file from the Terminal window.
+Execute the HyperMethylationOutlierDetector.sh script file from the Terminal window.
 
 ```
 
-./MethylatedOutlierDetector.sh
+./MethylationOutlierDetector.sh
 
 ```
 
