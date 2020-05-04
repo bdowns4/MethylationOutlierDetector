@@ -61,8 +61,6 @@ Execute the HyperMethylation_Outlier_Detector.sh script file from the Terminal w
 
 ```
 
----
-
 ```
 ## Usage
 ```
