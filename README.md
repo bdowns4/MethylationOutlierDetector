@@ -36,7 +36,6 @@ To install the R package data.table, execute the following command in R.
 
 ```
 install.packages("data.table")
-
 ```
 
 #### Step 2: Download Methylation Outlier Detector.
