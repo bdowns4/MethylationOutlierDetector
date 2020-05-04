@@ -767,4 +767,4 @@ cat $work/m11 $work/Odds_Ratio_Z_Sort >  $output/Hypomethylated_Controls_Odds_Ra
 
 
 rm $input/Script_1.sh
-#rm -r $work
+rm -r $work
