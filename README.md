@@ -50,10 +50,10 @@ In the Terminal window, set this directory as the current directory.
 cd /pathToDirectory/
 ```
 
-Execute the MethylationOutlierDetector.sh script file from the Terminal window.
+Execute the Methylation_Outlier_Detector.sh script file from the Terminal window.
 
 ```
-./MethylationOutlierDetector.sh
+./Methylation_Outlier_Detector.sh
 ```
 
 
