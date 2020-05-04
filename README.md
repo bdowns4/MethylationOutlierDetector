@@ -40,7 +40,7 @@ install.packages("data.table")
 
 #### Step 2: Download Methylation Outlier Detector.
 
-Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector/Methylation_Outlier_Detector.sh
+Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector/blob/master/Methylation_Outlier_Detector.sh
 
 unzip the file
 place the script file "MethylationOutlierDetector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
