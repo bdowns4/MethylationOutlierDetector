@@ -63,8 +63,9 @@ Execute the HyperMethylation_Outlier_Detector.sh script file from the Terminal w
 
 ---
 
+```
 ## Usage
-
+```
 This script is designed to be executed in the same directory as the two tab delimited data files labeled "Case" and "Control". 
 
 Once the script is executed, 3 new directories will be made; "Work", "Input", and "Output".
