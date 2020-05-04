@@ -41,7 +41,7 @@ install.packages("data.table")
 
 #### Step 2: Download Methylation Outlier Detector.
 
-Please download the script file release [here] https://github.com/bdowns4/Methylation-Outlier-Detector.git
+Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector.git
 
 ```
 unzip the file
@@ -57,7 +57,7 @@ Execute the HyperMethylation_Outlier_Detector.sh script file from the Terminal w
 
 ```
 
-./Methylated_Outlier_Detector.sh
+./MethylatedOutlierDetector.sh
 
 ```
 
