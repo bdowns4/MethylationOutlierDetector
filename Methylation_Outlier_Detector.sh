@@ -312,7 +312,7 @@ cat $work/sh_head $work/make_Cont1 $work/make_Case1 $work/make_All_1 $work/make_
 
 
 sed 's/OFS=/OFS="\\\t"/g' $work/Script_1.sh > $input/Script_1.sh
-#rm -r $work
+rm -r $work
 mkdir ./Work
 echo 'ID\tControl_Min_95%\tCase_Outlier\tDelta' > $work/m6
 echo 'ID\tControl_Max_95%\tCase_Outlier\tDelta' > $work/m7
