@@ -43,13 +43,12 @@ install.packages("data.table")
 
 Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector.git
 
-```
 unzip the file
 place the script file "MethylationOutlierDetector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
 In the Terminal window, set this directory as the current directory.
 
 ```
-cd /path/
+cd /pathToDirectory/
 
 ```
 
@@ -61,9 +60,9 @@ Execute the MethylationOutlierDetector.sh script file from the Terminal window.
 
 ```
 
-```
+
 ## Usage
-```
+
 This script is designed to be executed in the same directory as the two tab delimited data files labeled "Case" and "Control". 
 
 Once the script is executed, 3 new directories will be made; "Work", "Input", and "Output".
