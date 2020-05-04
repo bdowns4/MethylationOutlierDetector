@@ -53,7 +53,7 @@ cd /path/
 
 ```
 
-Execute the HyperMethylationOutlierDetector.sh script file from the Terminal window.
+Execute the MethylationOutlierDetector.sh script file from the Terminal window.
 
 ```
 
