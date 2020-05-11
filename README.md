@@ -16,7 +16,7 @@ This program can be modified for different methylation thresholds by changing li
 88, 93, 608, 610, 630, and 632 (Hypomethylated Controls)
 
 The error rate can be modified by changing lines:
-149, 157, 327-330, 4000, and 407
+149, 157, 327-330, 400, and 407
 
 ---
 
