@@ -21,7 +21,7 @@ The error rate can be modified by changing lines:
 ---
 
 ## Changelog
-[20200402] v0.01.0:Methylation Outlier Detector.
+[20200402] v0.01.0:Methylation_Outlier_Detector.
 
 ---
 
@@ -43,7 +43,7 @@ brew install gawk
 Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector/blob/master/Methylation_Outlier_Detector.sh
 
 unzip the file
-place the script file "MethylationOutlierDetector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
+place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
 In the Terminal window, set this directory as the current directory.
 
 ```
