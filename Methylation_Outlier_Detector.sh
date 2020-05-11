@@ -5,6 +5,8 @@ input="./Input"
 work="./Work"
 mkdir ./Output
 output="./Output"
+
+
 tail -n+2 ./Case* | sed 's/"//g' > $input/No_ID_Case
 tail -n+2 ./Control* | sed 's/"//g' > $input/No_ID_Control
 head -1 ./Case* | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Case
@@ -14,38 +16,48 @@ awk 'NR==FNR{a[$1];next}$1 in a{print $0} BEGIN {OFS="\t"}' $input/No_ID_Case $i
 cat $input/ID_Case $input/No_ID_Case_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g' > $input/Case
 cat $input/ID_Control $input/No_ID_Control_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g' > $input/Control
 rm $input/No_ID_Case | rm $input/No_ID_Control | rm $input/ID_Case | rm $input/ID_Control | rm $input/No_ID_Case_Over | rm $input/No_ID_Control_Over
+tail -n+2 ./Case* | sed 's/"//g' | awk '{ $1="";print} BEGIN {OFS="\t"}' | awk '{ sub(/^[ \t]+/, ""); print }' > $input/No_ID_Case
+tail -n+2 ./Control* | sed 's/"//g' |awk '{ $1="";print} BEGIN {OFS="\t"}' | awk '{ sub(/^[ \t]+/, ""); print }' > $input/No_ID_Control
 
-printf '#!/bin/sh \n' > $work/R_head
-head -47 ./Methylation_Outlier_Detector.sh | tail -25 | sed 's/#//g' > $work/R_tail
-cat $work/R_head $work/R_tail > $work/R.R
-chmod u+x $work/R.R
-rscript $work/R.R
+awk '{
+  split($0,a)
+  asort(a)
+  for(i=NF;i>0;i--){
+    printf("%s ",a[i])
+  }
+  print ""
+}'  $input/No_ID_Case  | sed 's/ /	/g' > $work/Case_Max
 
-#library(data.table)
-#print ('>---------------------------------')
-#Data<-fread("input/Control", header=TRUE, sep="\t")
+awk '{
+  split($0,a)
+  asort(a)
+  for(i=1; i<=NF; i++){
+    printf("%s ",a[i])
+  }
+  print ""
+}'  $input/No_ID_Case | sed 's/ /	/g' > $work/Case_Min
 
-#write.table (t(Data), "work/Control_Train_Trans", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#Data<-fread("work/Control_Train_Trans", header=TRUE, sep="\t")
-#a <- sapply(Data,sort,2, decreasing = TRUE)
-#b <- sapply(Data,sort,2, decreasing = FALSE)
-#write.table (t(a), "work/Control_Max", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#print ('----->----------------------------')
-#write.table (t(b), "work/Control_Min", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#print ('---------->-----------------------')
-#Data<-fread("input/Case", header=TRUE, sep="\t")
+awk '{
+  split($0,a)
+  asort(a)
+  for(i=NF;i>0;i--){
+    printf("%s ",a[i])
+  }
+  print ""
+}'  $input/No_ID_Control  | sed 's/ /	/g' > $work/Control_Max
 
-#write.table (t(Data), "work/Case_Train_Trans", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#print ('------------------>---------------')
-#Data<-fread("work/Case_Train_Trans", header=TRUE, sep="\t")
-#a <- sapply(Data,sort,2, decreasing = TRUE)
-#b <- sapply(Data,sort,2, decreasing = FALSE)
+awk '{
+  split($0,a)
+  asort(a)
+  for(i=1; i<=NF; i++){
+    printf("%s ",a[i])
+  }
+  print ""
+}'  $input/No_ID_Control | sed 's/ /	/g' > $work/Control_Min
 
-#write.table (t(a), "work/Case_Max", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#print ('--------------------------->------')
-#write.table (t(b), "work/Case_Min", row.names = FALSE, quote = FALSE, col.names = FALSE, sep="\t")
-#print ('--------------------------------->')
-head -56 ./Methylation_Outlier_Detector.sh | tail -7 | sed 's/#//g' > $work/make_All_1
+rm $input/No_ID_Case | rm $input/No_ID_Control
+
+head -67 ./Methylation_Outlier_Detector.sh | tail -6 | sed 's/#//g' > $work/make_All_1
 
 #sort $work/SMin_R > $work/SSMin_R
 #sort $work/SMin_F > $work/SSMin_F
@@ -54,9 +66,7 @@ head -56 ./Methylation_Outlier_Detector.sh | tail -7 | sed 's/#//g' > $work/make
 #sort $work/SMax_F > $work/SSMax_F
 
 
-head -95 ./Methylation_Outlier_Detector.sh | tail -35 | sed 's/#//g' > $work/make_All_2
-
-
+head -104 ./Methylation_Outlier_Detector.sh | tail -35 | sed 's/#//g' > $work/make_All_2
 
 
 
@@ -296,7 +306,7 @@ cat $work/sh_head $work/CaseScript > $work/CaseScript_1.sh
 
 chmod u+x $work/CaseScript_1.sh
 $work/CaseScript_1.sh
-echo '------------------>--------------'
+echo '----------------->---------------'
 
 paste -d " " $work/m1 $work/wc_Control2 $work/m3 > $work/Control_Script
 
@@ -306,7 +316,7 @@ chmod u+x $work/Control_Script_1.sh
 $work/Control_Script_1.sh
 
 
-echo '----------------------->---------'
+echo '-------------------->------------'
 
 cat $work/sh_head $work/make_Cont1 $work/make_Case1 $work/make_All_1 $work/make_Cont2 $work/make_Case2 $work/make_Cont3 $work/make_Case3 $work/make_Cont4 $work/make_Case4 $work/make_Cont5 $work/make_Case5 $work/make_Cont6 $work/make_Case6 $work/make_All_2 > $work/Script_1.sh
 
@@ -327,7 +337,7 @@ mv $input/SMax_F $work/SMax_F
 chmod u+x $input/Script_1.sh
 $input/Script_1.sh
 
-echo '------------------------->-------'
+echo '----------------------->---------'
 sed 's/NA/0/g' $input/Case | sed 's/NULL/0/g' > $work/Case_1_NA
 sed 's/NA/0/g' $input/Control | sed 's/NULL/0/g' > $work/Control_1_NA
 
