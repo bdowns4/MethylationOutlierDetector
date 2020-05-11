@@ -63,7 +63,7 @@ Execute the Methylation_Outlier_Detector.sh script file from the Terminal window
 
 This script is designed to be executed in the same directory as the two tab delimited data files labeled "Case" and "Control". 
 
-Once the script is executed, 3 new directories will be made; "Work", "Input", and "Output".
+Once the script is executed, 3 new directories will be made; "Input", "Output", and "Work".
 The processed Case and Control files will be moved to a new directory named "Input".
 The outlier markers files will be saved in the directory named "Output".
 After the program has completed, the working directory “Work” will be removed.
