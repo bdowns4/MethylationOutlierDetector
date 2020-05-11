@@ -40,7 +40,9 @@ brew install gawk
 
 #### Step 2: Download Methylation Outlier Detector.
 
-Please download the script file release [here] https://github.com/bdowns4/MethylationOutlierDetector/blob/master/Methylation_Outlier_Detector.sh
+Please download the script file release [here] 
+
+https://github.com/bdowns4/MethylationOutlierDetector.git
 
 unzip the file
 place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
