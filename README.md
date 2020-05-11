@@ -7,16 +7,16 @@ This program will make two types of output files, an "Odds_Ratios" file with the
 
 This program can be modified for different methylation thresholds by changing lines:
 
-76, 81, 424, 426, 446, and 448 (Hypermethylated Cases)
+86, 91, 434, 436, 456, and 458 (Hypermethylated Cases)
 
-77, 82, 424, 426, 446, and 448 (Hypermethylated Controls)
+87, 92, 434, 436, 456, and 458 (Hypermethylated Controls)
 
-79, 84, 598, 600, 620, and 622 (Hypomethylated Cases)
+89, 94, 608, 610, 630, and 632 (Hypomethylated Cases)
 
-78, 83, 598, 600, 620, and 622 (Hypomethylated Controls)
+88, 93, 608, 610, 630, and 632 (Hypomethylated Controls)
 
 The error rate can be modified by changing lines:
-139, 147, 317-320, 390, and 397
+149, 157, 327-330, 4000, and 407
 
 ---
 
