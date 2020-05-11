@@ -30,7 +30,7 @@ The error rate can be modified by changing lines:
 The preferred method for downloading this script file is through github
 
 
-#### Step 1: For the Mac OSX operating system, first install gwak.
+#### Step 1: For the Mac OS X operating system, first install gwak.
 
 To install gwak, execute the following command in the terminal.
 
