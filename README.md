@@ -30,12 +30,12 @@ The error rate can be modified by changing lines:
 The preferred method for downloading this script file is through github
 
 
-#### Step 1: Install the required R package data.table.
+#### Step 1: For the Mac OSX operating system, first install gwak.
 
-To install the R package data.table, execute the following command in R.
+To install gwak, execute the following command in the terminal.
 
 ```
-install.packages("data.table")
+brew install gawk
 ```
 
 #### Step 2: Download Methylation Outlier Detector.
