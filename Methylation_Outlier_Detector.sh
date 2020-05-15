@@ -6,58 +6,52 @@ work="./Work"
 mkdir ./Output
 output="./Output"
 
-
-tail -n+2 ./Case* | sed 's/"//g' > $input/No_ID_Case
-tail -n+2 ./Control* | sed 's/"//g' > $input/No_ID_Control
-head -1 ./Case* | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Case
-head -1 ./Control* | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Control
+echo '>--------------------------------'
+grep -v ^! ./Case* | tail -n+2  | sed 's/"//g' > $input/No_ID_Case
+grep -v ^! ./Control* | tail -n+2 | sed 's/"//g' > $input/No_ID_Control
+grep -v ^! ./Case* | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Case
+grep -v ^! ./Control* | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Control
 awk 'NR==FNR{a[$1];next}$1 in a{print $0} BEGIN {OFS="\t"}' $input/No_ID_Control $input/No_ID_Case  | sort > $input/No_ID_Case_Over
 awk 'NR==FNR{a[$1];next}$1 in a{print $0} BEGIN {OFS="\t"}' $input/No_ID_Case $input/No_ID_Control  | sort > $input/No_ID_Control_Over
-cat $input/ID_Case $input/No_ID_Case_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g' > $input/Case
-cat $input/ID_Control $input/No_ID_Control_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g' > $input/Control
+cat $input/ID_Case $input/No_ID_Case_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g'  > $input/Case
+cat $input/ID_Control $input/No_ID_Control_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g'| grep -v ! > $input/Control
+cut -f 2-  $input/No_ID_Control_Over > $input/No_ID_Control_Over_1
+cut -f 2-  $input/No_ID_Case_Over > $input/No_ID_Case_Over_1
 rm $input/No_ID_Case | rm $input/No_ID_Control | rm $input/ID_Case | rm $input/ID_Control | rm $input/No_ID_Case_Over | rm $input/No_ID_Control_Over
-tail -n+2 ./Case* | sed 's/"//g' | awk '{ $1="";print} BEGIN {OFS="\t"}' | awk '{ sub(/^[ \t]+/, ""); print }' > $input/No_ID_Case
-tail -n+2 ./Control* | sed 's/"//g' |awk '{ $1="";print} BEGIN {OFS="\t"}' | awk '{ sub(/^[ \t]+/, ""); print }' > $input/No_ID_Control
 
-awk '{
-  split($0,a)
-  asort(a)
-  for(i=NF;i>0;i--){
-    printf("%s ",a[i])
-  }
-  print ""
-}'  $input/No_ID_Case  | sed 's/ /	/g' > $work/Case_Max
+printf '#!/bin/perl \n' > $work/P_head
+head -41 ./Methylation_Outlier_Detector.sh | tail -17 | sed 's/#//g' > $work/P_tail
 
-awk '{
-  split($0,a)
-  asort(a)
-  for(i=1; i<=NF; i++){
-    printf("%s ",a[i])
-  }
-  print ""
-}'  $input/No_ID_Case | sed 's/ /	/g' > $work/Case_Min
+#use strict;
+#my $filename = "./Input/No_ID_Control_Over_1";
+#open MYFILE, "<", $filename or die $!;
+#my @DNA =<MYFILE>;
+#foreach my $string (@DNA) {
+ #   $string = split_sort($string);
+#}
+#sub split_sort {
+#    my $string = shift @_;
+#    my @internal_nums = split( " " , $string);
+#    @internal_nums = sort {$b <=> $a} @internal_nums;
+#    return join '	', @internal_nums;
+#}
+#print "@DNA\n";
+#close MYFILE;
+#exit;
 
-awk '{
-  split($0,a)
-  asort(a)
-  for(i=NF;i>0;i--){
-    printf("%s ",a[i])
-  }
-  print ""
-}'  $input/No_ID_Control  | sed 's/ /	/g' > $work/Control_Max
+cat $work/P_head $work/P_tail > $work/P.pl
+perl $work/P.pl | tr ' ' '\n' > $work/Control_Max
+sed 's/$b <=> $a/$a <=> $b/g' $work/P.pl > $work/P1.pl
+perl $work/P1.pl | tr ' ' '\n' > $work/Control_Min
+sed 's/Control/Case/g' $work/P.pl > $work/P2.pl
+perl $work/P2.pl | tr ' ' '\n' > $work/Case_Max
+sed 's/Control/Case/g' $work/P1.pl > $work/P3.pl
+perl $work/P3.pl | tr ' ' '\n' > $work/Case_Min
 
-awk '{
-  split($0,a)
-  asort(a)
-  for(i=1; i<=NF; i++){
-    printf("%s ",a[i])
-  }
-  print ""
-}'  $input/No_ID_Control | sed 's/ /	/g' > $work/Control_Min
 
-rm $input/No_ID_Case | rm $input/No_ID_Control
+rm $input/No_ID_Case_Over_1 | rm $input/No_ID_Control_Over_1
 
-head -67 ./Methylation_Outlier_Detector.sh | tail -6 | sed 's/#//g' > $work/make_All_1
+head -61 ./Methylation_Outlier_Detector.sh | tail -6 | sed 's/#//g' > $work/make_All_1
 
 #sort $work/SMin_R > $work/SSMin_R
 #sort $work/SMin_F > $work/SSMin_F
@@ -66,7 +60,7 @@ head -67 ./Methylation_Outlier_Detector.sh | tail -6 | sed 's/#//g' > $work/make
 #sort $work/SMax_F > $work/SSMax_F
 
 
-head -104 ./Methylation_Outlier_Detector.sh | tail -35 | sed 's/#//g' > $work/make_All_2
+head -98 ./Methylation_Outlier_Detector.sh | tail -35 | sed 's/#//g' > $work/make_All_2
 
 
 
