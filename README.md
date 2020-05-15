@@ -30,7 +30,7 @@ The error rate can be modified by changing lines:
 The preferred method for downloading this script file is through github.
 
 
-#### Step 1: Download Methylation Outlier Detector file.
+#### Step 1: Download the Methylation Outlier Detector file.
 
 Please download the script file release [here] 
 
