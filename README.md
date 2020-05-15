@@ -45,7 +45,7 @@ Place the script file "Methylation_Outlier_Detector.sh" in a new folder with the
 
 #### Step 4: Set the Terminal directory.
 
-In the Terminal window, set this directory as the current directory.
+In the Terminal window, set the new file as the current directory.
 
 ```
 cd /pathToDirectory/
