@@ -37,11 +37,11 @@ Please download the script file release [here]
 https://github.com/bdowns4/MethylationOutlierDetector.git
 
 #### Step 2: Unzip the Methylation Outlier Detector file.
-Double click the Methylation Outlier Detector file to unzip it.
+Double click the Methylation Outlier Detector file to unzip.
 
-#### Step 3: Copy the Methylation Outlier Detector to a new file.
+#### Step 3: Copy the Methylation Outlier Detector script file to a new folder.
 
-Place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”. The dataset files should have a single header row.
+Copy the script file "Methylation_Outlier_Detector.sh" into a new folder with the two dataset files labeled as “Case” and “Control”. 
 
 #### Step 4: Set the Terminal directory.
 
@@ -61,7 +61,7 @@ Execute the Methylation_Outlier_Detector.sh script file from the Terminal window
 
 ## Usage
 
-This script is designed to be executed in the same directory as the two tab delimited data files labeled "Case" and "Control". 
+This script is designed to be executed in the same directory as the two tab delimited dataset files labeled "Case" and "Control". The dataset files should have a single header row. 
 
 Once the script is executed, 3 new directories will be made; "Input", "Output", and "Work".
 The processed Case and Control files will be moved to a new directory named "Input".
