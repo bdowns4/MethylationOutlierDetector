@@ -7,16 +7,16 @@ This program will make two types of output files, an "Odds_Ratios" file with the
 
 This program can be modified for different methylation thresholds by changing lines:
 
-86, 91, 434, 436, 456, and 458 (Hypermethylated Cases)
+80, 85, 428, and 450 (Hypermethylated Cases)
 
-87, 92, 434, 436, 456, and 458 (Hypermethylated Controls)
+81, 86, 430, and 452 (Hypermethylated Controls)
 
-89, 94, 608, 610, 630, and 632 (Hypomethylated Cases)
+83, 88, 602, and 624 (Hypomethylated Cases)
 
-88, 93, 608, 610, 630, and 632 (Hypomethylated Controls)
+82, 87, 604, and 626 (Hypomethylated Controls)
 
 The error rate can be modified by changing lines:
-149, 157, 327-330, 400, and 407
+143, 151, 321-324, 394, and 401
 
 ---
 
@@ -27,30 +27,30 @@ The error rate can be modified by changing lines:
 
 ## Installation
 
-The preferred method for downloading this script file is through github
+The preferred method for downloading this script file is through github.
 
 
-#### Step 1: For the Mac OS X operating system, first install gwak.
-
-To install gwak, execute the following command in the terminal.
-
-```
-brew install gawk
-```
-
-#### Step 2: Download Methylation Outlier Detector.
+#### Step 1: Download Methylation Outlier Detector file.
 
 Please download the script file release [here] 
 
 https://github.com/bdowns4/MethylationOutlierDetector.git
 
-unzip the file
-place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”.
+#### Step 2: Unzip the Methylation Outlier Detector file.
+Double click the Methylation Outlier Detector file to unzip it.
+
+#### Step 3: Copy the Methylation Outlier Detector to a new file.
+
+Place the script file "Methylation_Outlier_Detector.sh" in a new folder with the two dataset files labeled as “Case” and “Control”. The dataset files should have a single header row.
+
+#### Step 4: Set the Terminal directory.
+
 In the Terminal window, set this directory as the current directory.
 
 ```
 cd /pathToDirectory/
 ```
+#### Step 5: Execute the program.
 
 Execute the Methylation_Outlier_Detector.sh script file from the Terminal window.
 
