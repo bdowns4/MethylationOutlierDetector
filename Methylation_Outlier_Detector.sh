@@ -315,7 +315,7 @@ echo '-------------------->------------'
 cat $work/sh_head $work/make_Cont1 $work/make_Case1 $work/make_All_1 $work/make_Cont2 $work/make_Case2 $work/make_Cont3 $work/make_Case3 $work/make_Cont4 $work/make_Case4 $work/make_Cont5 $work/make_Case5 $work/make_Cont6 $work/make_Case6 $work/make_All_2 > $work/Script_1.sh
 
 
-sed 's/OFS=/OFS="\\\t"/g' $work/Script_1.sh > $input/Script_1.sh
+sed 's/OFS=/OFS="\\t"/g' $work/Script_1.sh > $input/Script_1.sh
 rm -r $work
 mkdir ./Work
 echo 'ID\tControl_Min_95%\tCase_Outlier\tDelta' > $work/m6
@@ -515,7 +515,7 @@ cat $work/sh_head $work/make_Cont1 $work/make_Case1 $work/make_Cont6 $work/make_
 
 echo '---------------------------->----'
 
-sed 's/OFS=/OFS="\\\t"/g' $work/Script_1.sh > $input/Script_1.sh
+sed 's/OFS=/OFS="\\t"/g' $work/Script_1.sh > $input/Script_1.sh
 
 chmod u+x $input/Script_1.sh
 $input/Script_1.sh
@@ -689,7 +689,7 @@ cat $work/sh_head $work/make_Cont1 $work/make_Case1 $work/make_Cont6 $work/make_
 
 
 
-sed 's/OFS=/OFS="\\\t"/g' $work/Script_1.sh > $input/Script_1.sh
+sed 's/OFS=/OFS="\\t"/g' $work/Script_1.sh > $input/Script_1.sh
 
 chmod u+x $input/Script_1.sh
 $input/Script_1.sh
