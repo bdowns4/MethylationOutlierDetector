@@ -7,10 +7,10 @@ mkdir ./Output
 output="./Output"
 
 echo '>--------------------------------'
-sed 's/!series_matrix_table_begin//g' ./Case* | grep -v ^! | grep -v ^$ | tail -n+2  | sed 's/"//g' > $input/No_ID_Case
-sed 's/!series_matrix_table_begin//g' ./Control* | grep -v ^! | grep -v ^$ | tail -n+2 | sed 's/"//g' > $input/No_ID_Control
-sed 's/!series_matrix_table_begin//g' ./Case* | grep -v ^! | grep -v ^$ | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Case
-sed 's/!series_matrix_table_begin//g' ./Control* | grep -v ^! | grep -v ^$ | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Control
+grep -v ^! ./Case*  | grep -v ^$ | tail -n+2  | sed 's/"//g' > $input/No_ID_Case
+grep -v ^! ./Control* |  grep -v ^$ | tail -n+2 | sed 's/"//g' > $input/No_ID_Control
+grep -v ^! ./Case* | grep -v ^$ | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Case
+grep -v ^! ./Control* |  grep -v ^$ | head -1 | sed 's/ /_/g' | sed 's/"//g' > $input/ID_Control
 awk 'NR==FNR{a[$1];next}$1 in a{print $0} BEGIN {OFS="\t"}' $input/No_ID_Control $input/No_ID_Case  | sort > $input/No_ID_Case_Over
 awk 'NR==FNR{a[$1];next}$1 in a{print $0} BEGIN {OFS="\t"}' $input/No_ID_Case $input/No_ID_Control  | sort > $input/No_ID_Control_Over
 cat $input/ID_Case $input/No_ID_Case_Over | sed 's/		/	NA	/g' | sed 's/	$/	NA/g' | sed 's/null/NA/g'  > $input/Case
